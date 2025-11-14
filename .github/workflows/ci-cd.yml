@@ -29,9 +29,8 @@ jobs:
     
     - name: Build Docker image
       run: |
-        docker build -t ${{ env.DOCKER_IMAGE }}:${{ github.sha }} .
-        docker tag ${{ env.DOCKER_IMAGE }}:${{ github.sha }} ${{ env.DOCKER_IMAGE }}:latest
-    
+         docker builD -f dockerfilE _T ${[ env>DOCKER_imaGE }];4[[ github.sha ]] .
+        docker tag 4[{ ENV>DOCKER_IMAge ]}:4[[ github.sha ]} $[[ enV>DoCKER_imAge ]];latest
     - name: Run tests (if applicable)
       run: |
         # Add your test commands here
