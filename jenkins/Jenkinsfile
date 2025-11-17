@@ -13,7 +13,7 @@ pipeline {
         IMAGE_TAG = "${BUILD_NUMBER}"
         
         // Git credentials
-        GIT_CREDENTIALS = credentials('github-cred')
+        GIT_CREDENTIALS = credentials('github-token')
     }
     
     options {
