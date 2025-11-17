@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ivolve
-        image: your-image:tag
+        image: rowidarafiek/clouddevops-app:8
         ports:
         - containerPort: 80
 
