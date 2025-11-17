@@ -1,0 +1,68 @@
+---
+- name: Configure Jenkins Server
+  hosts: all
+  become: yes
+  gather_facts: yes
+  
+  vars:
+    kubectl_version: v1.28.0
+  
+  pre_tasks:
+    - name: Display target host information
+      debug:
+        msg: |
+          Configuring host: {{ inventory_hostname }}
+          IP Address: {{ ansible_host }}
+          Instance ID: {{ instance_id | default('N/A') }}
+          Instance Type: {{ instance_type | default('N/A') }}
+      tags: always
+    
+    - name: Wait for system to be ready
+      wait_for_connection:
+        timeout: 300
+      tags: always
+    
+    - name: Gather facts
+      setup:
+      tags: always
+  
+  roles:
+    - role: common
+      tags: common
+    
+    - role: java
+      tags: java
+    
+    - role: docker
+      tags: docker
+    
+    - role: jenkins
+      tags: jenkins
+  
+  post_tasks:
+    - name: Display completion message
+      debug:
+        msg: |
+          ==========================================
+          Configuration Complete!
+          ==========================================
+          
+          Jenkins URL: http://{{ ansible_host }}:8080
+          SSH Command: ssh -i ~/.ssh/clouddevops-key ec2-user@{{ ansible_host }}
+          
+          Jenkins initial password saved to: /home/ec2-user/jenkins_initial_password.txt
+          
+          Services installed:
+          - Git
+          - Docker
+          - Java 11
+          - Jenkins
+          - kubectl
+          - Minikube
+          
+          Next steps:
+          1. Access Jenkins at the URL above
+          2. Use the initial password to login
+          3. Install suggested plugins
+          4. Configure Jenkins for your CI/CD pipeline
+      tags: always

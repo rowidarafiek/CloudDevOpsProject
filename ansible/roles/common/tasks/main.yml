@@ -1,0 +1,70 @@
+# Common Role - Install basic packages (Amazon Linux 2023 compatible)
+
+- name: Update all packages
+  dnf:
+    name: '*'
+    state: latest
+    update_cache: yes
+  tags:
+    - common
+    - updates
+
+- name: Install common packages (without curl)
+  dnf:
+    name:
+      - git
+      - wget
+      - vim
+      - nano
+      - unzip
+      - tar
+      - bash-completion
+      - net-tools
+      - bind-utils
+      - telnet
+      - python3
+      - python3-pip
+    state: present
+  tags:
+    - common
+    - packages
+
+- name: Install Python packages
+  pip:
+    name:
+      - boto3
+      - botocore
+    executable: pip3
+    state: present
+  tags:
+    - common
+    - python
+
+- name: Set timezone to UTC
+  timezone:
+    name: UTC
+  tags:
+    - common
+    - config
+
+- name: Configure system limits
+  pam_limits:
+    domain: '*'
+    limit_type: '-'
+    limit_item: "{{ item.limit_item }}"
+    value: "{{ item.value }}"
+  loop:
+    - { limit_item: 'nofile', value: '65536' }
+    - { limit_item: 'nproc', value: '65536' }
+  tags:
+    - common
+    - limits
+
+- name: Create directory for scripts
+  file:
+    path: /opt/scripts
+    state: directory
+    mode: '0755'
+  tags:
+    - common
+    - directories

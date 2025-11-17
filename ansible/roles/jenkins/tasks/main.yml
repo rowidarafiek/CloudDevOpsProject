@@ -1,0 +1,151 @@
+---
+# Jenkins Role - Install and configure Jenkins
+
+- name: Add Jenkins repository
+  get_url:
+    url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+    mode: '0644'
+  tags:
+    - jenkins
+    - repos
+
+- name: Import Jenkins GPG key
+  rpm_key:
+    key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+    state: present
+  tags:
+    - jenkins
+    - repos
+
+- name: Install Jenkins
+  dnf:
+    name: jenkins
+    state: present
+  tags:
+    - jenkins
+    - install
+
+- name: Ensure Jenkins home directory exists
+  file:
+    path: /var/lib/jenkins
+    state: directory
+    owner: jenkins
+    group: jenkins
+    mode: '0755'
+  tags:
+    - jenkins
+    - config
+
+- name: Configure Jenkins Java options
+  lineinfile:
+    path: /etc/sysconfig/jenkins
+    regexp: '^JENKINS_JAVA_OPTIONS='
+    line: 'JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Xmx2048m -Xms1024m"'
+    create: yes
+  notify: restart jenkins
+  tags:
+    - jenkins
+    - config
+
+- name: Start and enable Jenkins service
+  systemd:
+    name: jenkins
+    state: started
+    enabled: yes
+  tags:
+    - jenkins
+    - service
+
+- name: Wait for Jenkins to start
+  uri:
+    url: "http://localhost:8080"
+    status_code: 200,403
+    timeout: 5
+  register: jenkins_service_status
+  retries: 30
+  delay: 10
+  until: jenkins_service_status is succeeded
+  tags:
+    - jenkins
+    - verify
+
+- name: Wait for Jenkins initial password file
+  wait_for:
+    path: /var/lib/jenkins/secrets/initialAdminPassword
+    timeout: 300
+  tags:
+    - jenkins
+    - verify
+
+- name: Get Jenkins initial admin password
+  slurp:
+    src: /var/lib/jenkins/secrets/initialAdminPassword
+  register: jenkins_initial_password
+  tags:
+    - jenkins
+    - password
+
+- name: Display Jenkins initial password
+  debug:
+    msg: |
+      ==========================================
+      Jenkins Initial Admin Password:
+      {{ jenkins_initial_password.content | b64decode }}
+      ==========================================
+      
+      Jenkins URL: http://{{ ansible_host }}:8080
+      
+      Next steps:
+      1. Open Jenkins URL in browser
+      2. Use the password above
+      3. Install suggested plugins
+      4. Create admin user
+  tags:
+    - jenkins
+    - password
+
+- name: Save Jenkins password to file
+  copy:
+    content: "{{ jenkins_initial_password.content | b64decode }}"
+    dest: /home/ec2-user/jenkins_initial_password.txt
+    owner: ec2-user
+    group: ec2-user
+    mode: '0600'
+  tags:
+    - jenkins
+    - password
+
+- name: Install kubectl (for Kubernetes deployment)
+  get_url:
+    url: "https://dl.k8s.io/release/{{ kubectl_version | default('v1.28.0') }}/bin/linux/amd64/kubectl"
+    dest: /usr/local/bin/kubectl
+    mode: '0755'
+  tags:
+    - jenkins
+    - kubectl
+
+- name: Install Minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: /usr/local/bin/minikube
+    mode: '0755'
+  tags:
+    - jenkins
+    - minikube
+
+- name: Create swap file for Minikube (if not exists)
+  shell: |
+    if [ ! -f /swapfile ]; then
+      dd if=/dev/zero of=/swapfile bs=1M count=2048
+      chmod 600 /swapfile
+      mkswap /swapfile
+      swapon /swapfile
+      echo '/swapfile none swap sw 0 0' >> /etc/fstab
+    fi
+  args:
+    creates: /swapfile
+  tags:
+    - jenkins
+    - minikube
+    - swap

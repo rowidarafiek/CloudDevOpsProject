@@ -1,0 +1,74 @@
+# Docker Role - Use pre-installed Docker on Amazon Linux 2023
+
+- name: Check if Docker is already installed
+  command: docker --version
+  register: docker_check
+  changed_when: false
+  failed_when: false
+  tags:
+    - docker
+
+- name: Start and enable Docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+  tags:
+    - docker
+    - service
+
+- name: Install Docker Python SDK (ignore conflicts)
+  shell: pip3 install docker --ignore-installed requests --user
+  become: no
+  tags:
+    - docker
+    - python
+
+- name: Add ec2-user to docker group
+  user:
+    name: ec2-user
+    groups: docker
+    append: yes
+  tags:
+    - docker
+    - users
+
+- name: Add jenkins user to docker group
+  user:
+    name: jenkins
+    groups: docker
+    append: yes
+  ignore_errors: yes
+  tags:
+    - docker
+    - users
+
+- name: Restart Docker service
+  systemd:
+    name: docker
+    state: restarted
+  tags:
+    - docker
+
+- name: Display Docker version
+  debug:
+    msg: "Docker version: {{ docker_check.stdout }}"
+  when: docker_check.rc == 0
+  tags:
+    - docker
+
+- name: Test Docker
+  command: docker run hello-world
+  register: docker_test
+  changed_when: false
+  ignore_errors: yes
+  tags:
+    - docker
+    - test
+
+- name: Display Docker test result
+  debug:
+    msg: "✅ Docker is working!"
+  when: docker_test.rc == 0
+  tags:
+    - docker
