@@ -13,7 +13,7 @@ def call() {
         git commit -m "Update image to build ${BUILD_NUMBER}" || echo "No changes to commit"
         
         # Push to repository
-        git push https://\${GIT_CREDENTIALS_USR}:\${GIT_CREDENTIALS_PSW}@github.com/YOUR_USERNAME/CloudDevOpsProject.git HEAD:main
+        git push https://\${GIT_CREDENTIALS_USR}:\${GIT_CREDENTIALS_PSW}@github.com/rowidarafiek/CloudDevOpsProject.git HEAD:main
     """
     
     echo "✅ Manifests pushed to Git repository"
