@@ -1,7 +1,9 @@
 @Library('clouddevops-shared-library') _
 
 pipeline {
-    agent any
+       agent {
+        label 'ec2-slave'  // Use EC2 slave
+    }
     
     environment {
         // DockerHub credentials (stored in Jenkins)
