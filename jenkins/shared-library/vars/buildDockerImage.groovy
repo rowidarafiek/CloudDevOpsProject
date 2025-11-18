@@ -3,7 +3,7 @@ def call(String imageName, String imageTag) {
     
     sh """
         # Build the image
-        docker build -t ${imageName}:${imageTag} .
+        docker build -t ${imageName}:${imageTag} ./docker
         
         # Also tag as latest
         docker tag ${imageName}:${imageTag} ${imageName}:latest
