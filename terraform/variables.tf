@@ -89,3 +89,5 @@ variable "enable_detailed_monitoring" {
   type        = bool
   default     = true
 }
+
+

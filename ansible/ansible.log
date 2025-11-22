@@ -8515,3 +8515,647 @@ mic).
         ]
     }
 }
+2025-11-20 17:03:19,565 p=19736 u=rowida n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-11-20 17:03:21,408 p=19736 u=rowida n=ansible | PLAY [Configure Jenkins Server] ************************************************
+2025-11-20 17:03:21,431 p=19736 u=rowida n=ansible | TASK [Gathering Facts] *********************************************************
+2025-11-20 17:03:25,659 p=19736 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:03:25,667 p=19736 u=rowida n=ansible | TASK [Display target host information] *****************************************
+2025-11-20 17:03:25,692 p=19736 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    Configuring host: 54.197.171.151
+    IP Address: 54.197.171.151
+    Instance ID: i-08ace9c4b1076a946
+    Instance Type: t2.large
+2025-11-20 17:03:25,700 p=19736 u=rowida n=ansible | TASK [Wait for system to be ready] *********************************************
+2025-11-20 17:03:26,926 p=19736 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:03:26,931 p=19736 u=rowida n=ansible | TASK [Gather facts] ************************************************************
+2025-11-20 17:03:29,365 p=19736 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:03:29,374 p=19736 u=rowida n=ansible | TASK [common : Update all packages] ********************************************
+2025-11-20 17:03:31,796 p=19736 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:03:31,801 p=19736 u=rowida n=ansible | TASK [common : Install common packages (without curl)] *************************
+2025-11-20 17:03:49,816 p=19736 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:03:49,821 p=19736 u=rowida n=ansible | TASK [common : Install Python packages] ****************************************
+2025-11-20 17:03:57,326 p=19736 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:03:57,336 p=19736 u=rowida n=ansible | TASK [common : Set timezone to UTC] ********************************************
+2025-11-20 17:03:58,889 p=19736 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:03:58,895 p=19736 u=rowida n=ansible | TASK [common : Configure system limits] ****************************************
+2025-11-20 17:04:00,190 p=19736 u=rowida n=ansible | changed: [54.197.171.151] => (item={'limit_item': 'nofile', 'value': '65536'})
+2025-11-20 17:04:01,515 p=19736 u=rowida n=ansible | changed: [54.197.171.151] => (item={'limit_item': 'nproc', 'value': '65536'})
+2025-11-20 17:04:01,520 p=19736 u=rowida n=ansible | TASK [common : Create directory for scripts] ***********************************
+2025-11-20 17:04:02,898 p=19736 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:04:02,903 p=19736 u=rowida n=ansible | TASK [java : Install Java 17 (Amazon Corretto)] ********************************
+2025-11-20 17:04:15,800 p=19736 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:04:15,805 p=19736 u=rowida n=ansible | TASK [java : Set JAVA_HOME environment variable] *******************************
+2025-11-20 17:04:17,113 p=19736 u=rowida n=ansible | [WARNING]: Module remote_tmp /root/.ansible/tmp did not exist and was created
+with a mode of 0700, this may cause issues when running as another user. To
+avoid this, create the remote_tmp dir with the correct permissions manually
+
+2025-11-20 17:04:17,113 p=19736 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:04:17,121 p=19736 u=rowida n=ansible | TASK [java : Verify Java installation] *****************************************
+2025-11-20 17:04:18,460 p=19736 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:04:18,467 p=19736 u=rowida n=ansible | TASK [java : Display Java version] *********************************************
+2025-11-20 17:04:18,486 p=19736 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    Java version installed: openjdk version "17.0.17" 2025-10-21 LTS
+    OpenJDK Runtime Environment Corretto-17.0.17.10.1 (build 17.0.17+10-LTS)
+    OpenJDK 64-Bit Server VM Corretto-17.0.17.10.1 (build 17.0.17+10-LTS, mixed mode, sharing)
+2025-11-20 17:04:18,493 p=19736 u=rowida n=ansible | TASK [docker : Check if Docker is already installed] ***************************
+2025-11-20 17:04:19,778 p=19736 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:04:19,790 p=19736 u=rowida n=ansible | TASK [docker : Start and enable Docker service] ********************************
+2025-11-20 17:04:21,958 p=19736 u=rowida n=ansible | fatal: [54.197.171.151]: FAILED! => changed=false 
+  msg: 'Could not find the requested service docker: host'
+2025-11-20 17:04:21,959 p=19736 u=rowida n=ansible | PLAY RECAP *********************************************************************
+2025-11-20 17:04:21,959 p=19736 u=rowida n=ansible | 54.197.171.151             : ok=15   changed=7    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-11-20 17:05:05,530 p=20159 u=rowida n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-11-20 17:05:05,659 p=20159 u=rowida n=ansible | PLAY [Configure Jenkins Server] ************************************************
+2025-11-20 17:05:05,674 p=20159 u=rowida n=ansible | TASK [Gathering Facts] *********************************************************
+2025-11-20 17:05:08,194 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:08,199 p=20159 u=rowida n=ansible | TASK [Display target host information] *****************************************
+2025-11-20 17:05:08,220 p=20159 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    Configuring host: 54.197.171.151
+    IP Address: 54.197.171.151
+    Instance ID: i-08ace9c4b1076a946
+    Instance Type: t2.large
+2025-11-20 17:05:08,227 p=20159 u=rowida n=ansible | TASK [Wait for system to be ready] *********************************************
+2025-11-20 17:05:09,444 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:09,449 p=20159 u=rowida n=ansible | TASK [Gather facts] ************************************************************
+2025-11-20 17:05:11,830 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:11,839 p=20159 u=rowida n=ansible | TASK [common : Update all packages] ********************************************
+2025-11-20 17:05:14,296 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:14,301 p=20159 u=rowida n=ansible | TASK [common : Install common packages (without curl)] *************************
+2025-11-20 17:05:16,344 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:16,349 p=20159 u=rowida n=ansible | TASK [common : Install Python packages] ****************************************
+2025-11-20 17:05:18,312 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:18,317 p=20159 u=rowida n=ansible | TASK [common : Set timezone to UTC] ********************************************
+2025-11-20 17:05:19,779 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:19,787 p=20159 u=rowida n=ansible | TASK [common : Configure system limits] ****************************************
+2025-11-20 17:05:21,079 p=20159 u=rowida n=ansible | ok: [54.197.171.151] => (item={'limit_item': 'nofile', 'value': '65536'})
+2025-11-20 17:05:22,374 p=20159 u=rowida n=ansible | ok: [54.197.171.151] => (item={'limit_item': 'nproc', 'value': '65536'})
+2025-11-20 17:05:22,379 p=20159 u=rowida n=ansible | TASK [common : Create directory for scripts] ***********************************
+2025-11-20 17:05:23,699 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:23,705 p=20159 u=rowida n=ansible | TASK [java : Install Java 17 (Amazon Corretto)] ********************************
+2025-11-20 17:05:25,739 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:25,748 p=20159 u=rowida n=ansible | TASK [java : Set JAVA_HOME environment variable] *******************************
+2025-11-20 17:05:27,053 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:27,059 p=20159 u=rowida n=ansible | TASK [java : Verify Java installation] *****************************************
+2025-11-20 17:05:28,403 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:28,408 p=20159 u=rowida n=ansible | TASK [java : Display Java version] *********************************************
+2025-11-20 17:05:28,428 p=20159 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    Java version installed: openjdk version "17.0.17" 2025-10-21 LTS
+    OpenJDK Runtime Environment Corretto-17.0.17.10.1 (build 17.0.17+10-LTS)
+    OpenJDK 64-Bit Server VM Corretto-17.0.17.10.1 (build 17.0.17+10-LTS, mixed mode, sharing)
+2025-11-20 17:05:28,436 p=20159 u=rowida n=ansible | TASK [docker : Check if Docker is already installed] ***************************
+2025-11-20 17:05:29,703 p=20159 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:05:29,708 p=20159 u=rowida n=ansible | TASK [docker : Start and enable Docker service] ********************************
+2025-11-20 17:05:31,893 p=20159 u=rowida n=ansible | fatal: [54.197.171.151]: FAILED! => changed=false 
+  msg: 'Could not find the requested service docker: host'
+2025-11-20 17:05:31,894 p=20159 u=rowida n=ansible | PLAY RECAP *********************************************************************
+2025-11-20 17:05:31,894 p=20159 u=rowida n=ansible | 54.197.171.151             : ok=15   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-11-20 17:07:46,300 p=20858 u=rowida n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-11-20 17:07:49,528 p=20858 u=rowida n=ansible | 54.197.171.151 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+2025-11-20 17:08:04,946 p=21000 u=rowida n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-11-20 17:08:05,075 p=21000 u=rowida n=ansible | PLAY [Configure Jenkins Server] ************************************************
+2025-11-20 17:08:05,091 p=21000 u=rowida n=ansible | TASK [Gathering Facts] *********************************************************
+2025-11-20 17:08:07,548 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:07,553 p=21000 u=rowida n=ansible | TASK [Display target host information] *****************************************
+2025-11-20 17:08:07,568 p=21000 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    Configuring host: 54.197.171.151
+    IP Address: 54.197.171.151
+    Instance ID: i-08ace9c4b1076a946
+    Instance Type: t2.large
+2025-11-20 17:08:07,573 p=21000 u=rowida n=ansible | TASK [Wait for system to be ready] *********************************************
+2025-11-20 17:08:09,285 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:09,289 p=21000 u=rowida n=ansible | TASK [Gather facts] ************************************************************
+2025-11-20 17:08:11,670 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:11,682 p=21000 u=rowida n=ansible | TASK [common : Update all packages] ********************************************
+2025-11-20 17:08:14,175 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:14,180 p=21000 u=rowida n=ansible | TASK [common : Install common packages (without curl)] *************************
+2025-11-20 17:08:16,165 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:16,170 p=21000 u=rowida n=ansible | TASK [common : Install Python packages] ****************************************
+2025-11-20 17:08:18,117 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:18,122 p=21000 u=rowida n=ansible | TASK [common : Set timezone to UTC] ********************************************
+2025-11-20 17:08:19,594 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:19,603 p=21000 u=rowida n=ansible | TASK [common : Configure system limits] ****************************************
+2025-11-20 17:08:20,909 p=21000 u=rowida n=ansible | ok: [54.197.171.151] => (item={'limit_item': 'nofile', 'value': '65536'})
+2025-11-20 17:08:22,216 p=21000 u=rowida n=ansible | ok: [54.197.171.151] => (item={'limit_item': 'nproc', 'value': '65536'})
+2025-11-20 17:08:22,227 p=21000 u=rowida n=ansible | TASK [common : Create directory for scripts] ***********************************
+2025-11-20 17:08:23,562 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:23,571 p=21000 u=rowida n=ansible | TASK [java : Install Java 17 (Amazon Corretto)] ********************************
+2025-11-20 17:08:25,638 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:25,643 p=21000 u=rowida n=ansible | TASK [java : Set JAVA_HOME environment variable] *******************************
+2025-11-20 17:08:26,955 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:26,961 p=21000 u=rowida n=ansible | TASK [java : Verify Java installation] *****************************************
+2025-11-20 17:08:28,314 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:28,318 p=21000 u=rowida n=ansible | TASK [java : Display Java version] *********************************************
+2025-11-20 17:08:28,344 p=21000 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    Java version installed: openjdk version "17.0.17" 2025-10-21 LTS
+    OpenJDK Runtime Environment Corretto-17.0.17.10.1 (build 17.0.17+10-LTS)
+    OpenJDK 64-Bit Server VM Corretto-17.0.17.10.1 (build 17.0.17+10-LTS, mixed mode, sharing)
+2025-11-20 17:08:28,352 p=21000 u=rowida n=ansible | TASK [docker : Check if Docker is already installed] ***************************
+2025-11-20 17:08:29,629 p=21000 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:08:29,634 p=21000 u=rowida n=ansible | TASK [docker : Start and enable Docker service] ********************************
+2025-11-20 17:08:31,806 p=21000 u=rowida n=ansible | fatal: [54.197.171.151]: FAILED! => changed=false 
+  msg: 'Could not find the requested service docker: host'
+2025-11-20 17:08:31,807 p=21000 u=rowida n=ansible | PLAY RECAP *********************************************************************
+2025-11-20 17:08:31,807 p=21000 u=rowida n=ansible | 54.197.171.151             : ok=15   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-11-20 17:12:16,335 p=21931 u=rowida n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-11-20 17:12:17,882 p=21931 u=rowida n=ansible | PLAY [Configure Jenkins Server] ************************************************
+2025-11-20 17:12:17,893 p=21931 u=rowida n=ansible | TASK [Gathering Facts] *********************************************************
+2025-11-20 17:12:22,485 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:22,490 p=21931 u=rowida n=ansible | TASK [Display target host information] *****************************************
+2025-11-20 17:12:22,509 p=21931 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    Configuring host: 54.197.171.151
+    IP Address: 54.197.171.151
+    Instance ID: i-08ace9c4b1076a946
+    Instance Type: t2.large
+2025-11-20 17:12:22,517 p=21931 u=rowida n=ansible | TASK [Wait for system to be ready] *********************************************
+2025-11-20 17:12:23,828 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:23,836 p=21931 u=rowida n=ansible | TASK [Gather facts] ************************************************************
+2025-11-20 17:12:26,388 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:26,400 p=21931 u=rowida n=ansible | TASK [common : Update all packages] ********************************************
+2025-11-20 17:12:28,851 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:28,856 p=21931 u=rowida n=ansible | TASK [common : Install common packages (without curl)] *************************
+2025-11-20 17:12:30,975 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:30,984 p=21931 u=rowida n=ansible | TASK [common : Install Python packages] ****************************************
+2025-11-20 17:12:32,996 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:33,001 p=21931 u=rowida n=ansible | TASK [common : Set timezone to UTC] ********************************************
+2025-11-20 17:12:34,578 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:34,584 p=21931 u=rowida n=ansible | TASK [common : Configure system limits] ****************************************
+2025-11-20 17:12:35,961 p=21931 u=rowida n=ansible | ok: [54.197.171.151] => (item={'limit_item': 'nofile', 'value': '65536'})
+2025-11-20 17:12:37,309 p=21931 u=rowida n=ansible | ok: [54.197.171.151] => (item={'limit_item': 'nproc', 'value': '65536'})
+2025-11-20 17:12:37,316 p=21931 u=rowida n=ansible | TASK [common : Create directory for scripts] ***********************************
+2025-11-20 17:12:38,748 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:38,757 p=21931 u=rowida n=ansible | TASK [java : Install Java 17 (Amazon Corretto)] ********************************
+2025-11-20 17:12:40,946 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:40,951 p=21931 u=rowida n=ansible | TASK [java : Set JAVA_HOME environment variable] *******************************
+2025-11-20 17:12:42,313 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:42,319 p=21931 u=rowida n=ansible | TASK [java : Verify Java installation] *****************************************
+2025-11-20 17:12:43,692 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:43,700 p=21931 u=rowida n=ansible | TASK [java : Display Java version] *********************************************
+2025-11-20 17:12:43,721 p=21931 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    Java version installed: openjdk version "17.0.17" 2025-10-21 LTS
+    OpenJDK Runtime Environment Corretto-17.0.17.10.1 (build 17.0.17+10-LTS)
+    OpenJDK 64-Bit Server VM Corretto-17.0.17.10.1 (build 17.0.17+10-LTS, mixed mode, sharing)
+2025-11-20 17:12:43,726 p=21931 u=rowida n=ansible | TASK [docker : Check if Docker is already installed] ***************************
+2025-11-20 17:12:45,050 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:45,057 p=21931 u=rowida n=ansible | TASK [docker : Start and enable Docker service] ********************************
+2025-11-20 17:12:47,291 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:47,299 p=21931 u=rowida n=ansible | TASK [docker : Install Docker Python SDK (ignore conflicts)] *******************
+2025-11-20 17:12:50,759 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:12:50,765 p=21931 u=rowida n=ansible | TASK [docker : Add ec2-user to docker group] ***********************************
+2025-11-20 17:12:52,385 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:52,390 p=21931 u=rowida n=ansible | TASK [docker : Add jenkins user to docker group] *******************************
+2025-11-20 17:12:53,930 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:12:53,936 p=21931 u=rowida n=ansible | TASK [docker : Restart Docker service] *****************************************
+2025-11-20 17:12:57,424 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:12:57,430 p=21931 u=rowida n=ansible | TASK [docker : Display Docker version] *****************************************
+2025-11-20 17:12:57,452 p=21931 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: 'Docker version: Docker version 25.0.13, build 0bab007'
+2025-11-20 17:12:57,457 p=21931 u=rowida n=ansible | TASK [docker : Test Docker] ****************************************************
+2025-11-20 17:12:59,740 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:12:59,746 p=21931 u=rowida n=ansible | TASK [docker : Display Docker test result] *************************************
+2025-11-20 17:12:59,765 p=21931 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: ✅ Docker is working!
+2025-11-20 17:12:59,771 p=21931 u=rowida n=ansible | TASK [jenkins : Add Jenkins repository] ****************************************
+2025-11-20 17:13:01,399 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:13:01,405 p=21931 u=rowida n=ansible | TASK [jenkins : Import Jenkins GPG key] ****************************************
+2025-11-20 17:13:03,037 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:13:03,043 p=21931 u=rowida n=ansible | TASK [jenkins : Install Jenkins] ***********************************************
+2025-11-20 17:13:32,765 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:13:32,771 p=21931 u=rowida n=ansible | TASK [jenkins : Ensure Jenkins home directory exists] **************************
+2025-11-20 17:13:34,161 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:13:34,167 p=21931 u=rowida n=ansible | TASK [jenkins : Configure Jenkins Java options] ********************************
+2025-11-20 17:13:35,516 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:13:35,522 p=21931 u=rowida n=ansible | TASK [jenkins : Start and enable Jenkins service] ******************************
+2025-11-20 17:13:47,747 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:13:47,755 p=21931 u=rowida n=ansible | TASK [jenkins : Wait for Jenkins to start] *************************************
+2025-11-20 17:13:51,041 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:13:51,046 p=21931 u=rowida n=ansible | TASK [jenkins : Wait for Jenkins initial password file] ************************
+2025-11-20 17:13:52,402 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:13:52,410 p=21931 u=rowida n=ansible | TASK [jenkins : Get Jenkins initial admin password] ****************************
+2025-11-20 17:13:53,733 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:13:53,747 p=21931 u=rowida n=ansible | TASK [jenkins : Display Jenkins initial password] ******************************
+2025-11-20 17:13:53,771 p=21931 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    ==========================================
+    Jenkins Initial Admin Password:
+    63953ca665924825a90e1af0c0fdd669
+  
+    ==========================================
+  
+    Jenkins URL: http://54.197.171.151:8080
+  
+    Next steps:
+    1. Open Jenkins URL in browser
+    2. Use the password above
+    3. Install suggested plugins
+    4. Create admin user
+2025-11-20 17:13:53,783 p=21931 u=rowida n=ansible | TASK [jenkins : Save Jenkins password to file] *********************************
+2025-11-20 17:14:00,080 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:14:00,085 p=21931 u=rowida n=ansible | TASK [jenkins : Install kubectl (for Kubernetes deployment)] *******************
+2025-11-20 17:14:01,874 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:14:01,879 p=21931 u=rowida n=ansible | TASK [jenkins : Install Minikube] **********************************************
+2025-11-20 17:14:03,463 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:14:03,469 p=21931 u=rowida n=ansible | TASK [jenkins : Create swap file for Minikube (if not exists)] *****************
+2025-11-20 17:14:04,757 p=21931 u=rowida n=ansible | ok: [54.197.171.151]
+2025-11-20 17:14:04,763 p=21931 u=rowida n=ansible | RUNNING HANDLER [jenkins : restart jenkins] ************************************
+2025-11-20 17:14:14,803 p=21931 u=rowida n=ansible | changed: [54.197.171.151]
+2025-11-20 17:14:14,809 p=21931 u=rowida n=ansible | TASK [Display completion message] **********************************************
+2025-11-20 17:14:14,842 p=21931 u=rowida n=ansible | ok: [54.197.171.151] => 
+  msg: |-
+    ==========================================
+    Configuration Complete!
+    ==========================================
+  
+    Jenkins URL: http://54.197.171.151:8080
+    SSH Command: ssh -i ~/.ssh/clouddevops-key ec2-user@54.197.171.151
+  
+    Jenkins initial password saved to: /home/ec2-user/jenkins_initial_password.txt
+  
+    Services installed:
+    - Git
+    - Docker
+    - Java 11
+    - Jenkins
+    - kubectl
+    - Minikube
+  
+    Next steps:
+    1. Access Jenkins at the URL above
+    2. Use the initial password to login
+    3. Install suggested plugins
+    4. Configure Jenkins for your CI/CD pipeline
+2025-11-20 17:14:14,849 p=21931 u=rowida n=ansible | PLAY RECAP *********************************************************************
+2025-11-20 17:14:14,849 p=21931 u=rowida n=ansible | 54.197.171.151             : ok=39   changed=10   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2025-11-22 14:17:08,293 p=16907 u=rowida n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-11-22 14:17:11,309 p=16907 u=rowida n=ansible | {
+    "_meta": {
+        "hostvars": {
+            "13.219.152.247": {
+                "ami_launch_index": 0,
+                "ansible_connection": "ssh",
+                "ansible_host": "13.219.152.247",
+                "ansible_python_interpreter": "/usr/bin/python3",
+                "ansible_ssh_common_args": "-o StrictHostKeyChecking=no",
+                "ansible_ssh_private_key_file": "~/.ssh/clouddevops-key.pem",
+                "ansible_user": "ec2-user",
+                "architecture": "x86_64",
+                "availability_zone": "us-east-1a",
+                "block_device_mappings": [
+                    {
+                        "device_name": "/dev/xvda",
+                        "ebs": {
+                            "attach_time": "2025-11-22T12:11:35+00:00",
+                            "delete_on_termination": true,
+                            "status": "attached",
+                            "volume_id": "vol-0652e7ec37fa0c205"
+                        }
+                    }
+                ],
+                "boot_mode": "uefi-preferred",
+                "capacity_reservation_specification": {
+                    "capacity_reservation_preference": "open"
+                },
+                "client_token": "terraform-20251122121133744600000003",
+                "cpu_options": {
+                    "core_count": 2,
+                    "threads_per_core": 1
+                },
+                "current_instance_boot_mode": "legacy-bios",
+                "ebs_optimized": false,
+                "ena_support": true,
+                "enclave_options": {
+                    "enabled": false
+                },
+                "hibernation_options": {
+                    "configured": false
+                },
+                "hypervisor": "xen",
+                "image_id": "ami-08fa3ed5577079e64",
+                "instance_id": "i-0d5f77f2536156ae6",
+                "instance_type": "t2.large",
+                "key_name": "clouddevops-key",
+                "launch_time": "2025-11-22T12:11:34+00:00",
+                "maintenance_options": {
+                    "auto_recovery": "default",
+                    "reboot_migration": "default"
+                },
+                "metadata_options": {
+                    "http_endpoint": "enabled",
+                    "http_protocol_ipv6": "disabled",
+                    "http_put_response_hop_limit": 2,
+                    "http_tokens": "required",
+                    "instance_metadata_tags": "disabled",
+                    "state": "applied"
+                },
+                "monitoring": {
+                    "state": "enabled"
+                },
+                "network_interfaces": [
+                    {
+                        "association": {
+                            "ip_owner_id": "307477218054",
+                            "public_dns_name": "ec2-13-219-152-247.compute-1.amazonaws.com",
+                            "public_ip": "13.219.152.247"
+                        },
+                        "attachment": {
+                            "attach_time": "2025-11-22T12:11:34+00:00",
+                            "attachment_id": "eni-attach-06510b93487e8e0bd",
+                            "delete_on_termination": true,
+                            "device_index": 0,
+                            "network_card_index": 0,
+                            "status": "attached"
+                        },
+                        "description": "",
+                        "groups": [
+                            {
+                                "group_id": "sg-0904cf317e4e1c6a4",
+                                "group_name": "clouddevops-jenkins-sg"
+                            }
+                        ],
+                        "interface_type": "interface",
+                        "ipv6_addresses": [],
+                        "mac_address": "12:d4:7c:ba:49:2f",
+                        "network_interface_id": "eni-03eb6985dd630660c",
+                        "operator": {
+                            "managed": false
+                        },
+                        "owner_id": "307477218054",
+                        "private_dns_name": "ip-10-0-1-213.ec2.internal",
+                        "private_ip_address": "10.0.1.213",
+                        "private_ip_addresses": [
+                            {
+                                "association": {
+                                    "ip_owner_id": "307477218054",
+                                    "public_dns_name": "ec2-13-219-152-247.compute-1.amazonaws.com",
+                                    "public_ip": "13.219.152.247"
+                                },
+                                "primary": true,
+                                "private_dns_name": "ip-10-0-1-213.ec2.internal",
+                                "private_ip_address": "10.0.1.213"
+                            }
+                        ],
+                        "source_dest_check": true,
+                        "status": "in-use",
+                        "subnet_id": "subnet-04e26ca7b931c2f7c",
+                        "vpc_id": "vpc-0983b653141f66708"
+                    }
+                ],
+                "network_performance_options": {
+                    "bandwidth_weighting": "default"
+                },
+                "operator": {
+                    "managed": false
+                },
+                "owner_id": "307477218054",
+                "placement": {
+                    "availability_zone": "us-east-1a",
+                    "availability_zone_id": "use1-az2",
+                    "group_name": "",
+                    "region": "us-east-1",
+                    "tenancy": "default"
+                },
+                "platform_details": "Linux/UNIX",
+                "private_dns_name": "ip-10-0-1-213.ec2.internal",
+                "private_dns_name_options": {
+                    "enable_resource_name_dns_a_record": false,
+                    "enable_resource_name_dns_aaaa_record": false,
+                    "hostname_type": "ip-name"
+                },
+                "private_ip_address": "10.0.1.213",
+                "product_codes": [],
+                "public_dns_name": "ec2-13-219-152-247.compute-1.amazonaws.com",
+                "public_ip_address": "13.219.152.247",
+                "requester_id": "",
+                "reservation_id": "r-04f3f5e29d5501d64",
+                "root_device_name": "/dev/xvda",
+                "root_device_type": "ebs",
+                "security_groups": [
+                    {
+                        "group_id": "sg-0904cf317e4e1c6a4",
+                        "group_name": "clouddevops-jenkins-sg"
+                    }
+                ],
+                "source_dest_check": true,
+                "state": {
+                    "code": 16,
+                    "name": "running"
+                },
+                "state_transition_reason": "",
+                "subnet_id": "subnet-04e26ca7b931c2f7c",
+                "tags": {
+                    "Ansible": "managed",
+                    "AutoStart": "No",
+                    "Backup": "Daily",
+                    "Category": "Compute",
+                    "Email": "your.email@example.com",
+                    "Environment": "production",
+                    "ManagedBy": "Terraform",
+                    "Monitoring": "Enabled",
+                    "Name": "clouddevops-jenkins-server",
+                    "OS": "Amazon-Linux-2023",
+                    "Owner": "Your Name",
+                    "Project": "clouddevops",
+                    "Purpose": "Graduation-Project",
+                    "Repository": "github.com/yourname/CloudDevOpsProject",
+                    "Role": "CI-CD-Server",
+                    "Service": "Jenkins",
+                    "Type": "EC2"
+                },
+                "usage_operation": "RunInstances",
+                "usage_operation_update_time": "2025-11-22T12:11:34+00:00",
+                "virtualization_type": "hvm",
+                "vpc_id": "vpc-0983b653141f66708"
+            }
+        }
+    },
+    "all": {
+        "children": [
+            "aws_ec2",
+            "project_clouddevops",
+            "service_Jenkins",
+            "tag_clouddevops_jenkins_server",
+            "ungrouped"
+        ]
+    },
+    "aws_ec2": {
+        "hosts": [
+            "13.219.152.247"
+        ]
+    },
+    "project_clouddevops": {
+        "hosts": [
+            "13.219.152.247"
+        ]
+    },
+    "service_Jenkins": {
+        "hosts": [
+            "13.219.152.247"
+        ]
+    },
+    "tag_clouddevops_jenkins_server": {
+        "hosts": [
+            "13.219.152.247"
+        ]
+    }
+}
+2025-11-22 14:17:26,634 p=16938 u=rowida n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-11-22 14:17:26,659 p=16938 u=rowida n=ansible | @all:
+  |--@aws_ec2:
+  |  |--13.219.152.247
+  |--@project_clouddevops:
+  |  |--13.219.152.247
+  |--@service_Jenkins:
+  |  |--13.219.152.247
+  |--@tag_clouddevops_jenkins_server:
+  |  |--13.219.152.247
+  |--@ungrouped:
+2025-11-22 14:17:46,385 p=17032 u=rowida n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-11-22 14:17:50,709 p=17032 u=rowida n=ansible | 13.219.152.247 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+2025-11-22 14:17:58,309 p=17077 u=rowida n=botocore.credentials | Found credentials in shared credentials file: ~/.aws/credentials
+2025-11-22 14:17:58,671 p=17077 u=rowida n=ansible | PLAY [Configure Jenkins Server] ************************************************
+2025-11-22 14:17:58,691 p=17077 u=rowida n=ansible | TASK [Gathering Facts] *********************************************************
+2025-11-22 14:18:01,434 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:18:01,443 p=17077 u=rowida n=ansible | TASK [Display target host information] *****************************************
+2025-11-22 14:18:01,469 p=17077 u=rowida n=ansible | ok: [13.219.152.247] => 
+  msg: |-
+    Configuring host: 13.219.152.247
+    IP Address: 13.219.152.247
+    Instance ID: i-0d5f77f2536156ae6
+    Instance Type: t2.large
+2025-11-22 14:18:01,477 p=17077 u=rowida n=ansible | TASK [Wait for system to be ready] *********************************************
+2025-11-22 14:18:02,976 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:18:02,992 p=17077 u=rowida n=ansible | TASK [Gather facts] ************************************************************
+2025-11-22 14:18:05,572 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:18:05,586 p=17077 u=rowida n=ansible | TASK [common : Update all packages] ********************************************
+2025-11-22 14:18:08,121 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:18:08,135 p=17077 u=rowida n=ansible | TASK [common : Install common packages (without curl)] *************************
+2025-11-22 14:18:26,180 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:18:26,190 p=17077 u=rowida n=ansible | TASK [common : Install Python packages] ****************************************
+2025-11-22 14:18:33,990 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:18:33,997 p=17077 u=rowida n=ansible | TASK [common : Set timezone to UTC] ********************************************
+2025-11-22 14:18:35,658 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:18:35,668 p=17077 u=rowida n=ansible | TASK [common : Configure system limits] ****************************************
+2025-11-22 14:18:37,271 p=17077 u=rowida n=ansible | changed: [13.219.152.247] => (item={'limit_item': 'nofile', 'value': '65536'})
+2025-11-22 14:18:38,665 p=17077 u=rowida n=ansible | changed: [13.219.152.247] => (item={'limit_item': 'nproc', 'value': '65536'})
+2025-11-22 14:18:38,674 p=17077 u=rowida n=ansible | TASK [common : Create directory for scripts] ***********************************
+2025-11-22 14:18:40,204 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:18:40,215 p=17077 u=rowida n=ansible | TASK [java : Install Java 17 (Amazon Corretto)] ********************************
+2025-11-22 14:18:52,832 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:18:52,851 p=17077 u=rowida n=ansible | TASK [java : Set JAVA_HOME environment variable] *******************************
+2025-11-22 14:18:54,258 p=17077 u=rowida n=ansible | [WARNING]: Module remote_tmp /root/.ansible/tmp did not exist and was created
+with a mode of 0700, this may cause issues when running as another user. To
+avoid this, create the remote_tmp dir with the correct permissions manually
+
+2025-11-22 14:18:54,258 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:18:54,312 p=17077 u=rowida n=ansible | TASK [java : Verify Java installation] *****************************************
+2025-11-22 14:18:55,650 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:18:55,656 p=17077 u=rowida n=ansible | TASK [java : Display Java version] *********************************************
+2025-11-22 14:18:55,678 p=17077 u=rowida n=ansible | ok: [13.219.152.247] => 
+  msg: |-
+    Java version installed: openjdk version "17.0.17" 2025-10-21 LTS
+    OpenJDK Runtime Environment Corretto-17.0.17.10.1 (build 17.0.17+10-LTS)
+    OpenJDK 64-Bit Server VM Corretto-17.0.17.10.1 (build 17.0.17+10-LTS, mixed mode, sharing)
+2025-11-22 14:18:55,686 p=17077 u=rowida n=ansible | TASK [docker : Check if Docker is already installed] ***************************
+2025-11-22 14:18:57,360 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:18:57,372 p=17077 u=rowida n=ansible | TASK [docker : Start and enable Docker service] ********************************
+2025-11-22 14:18:59,904 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:18:59,961 p=17077 u=rowida n=ansible | TASK [docker : Install Docker Python SDK (ignore conflicts)] *******************
+2025-11-22 14:19:03,774 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:19:03,788 p=17077 u=rowida n=ansible | TASK [docker : Add ec2-user to docker group] ***********************************
+2025-11-22 14:19:05,325 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:19:05,332 p=17077 u=rowida n=ansible | TASK [docker : Add jenkins user to docker group] *******************************
+2025-11-22 14:19:06,858 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:19:06,865 p=17077 u=rowida n=ansible | TASK [docker : Restart Docker service] *****************************************
+2025-11-22 14:19:11,139 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:19:11,149 p=17077 u=rowida n=ansible | TASK [docker : Display Docker version] *****************************************
+2025-11-22 14:19:11,178 p=17077 u=rowida n=ansible | ok: [13.219.152.247] => 
+  msg: 'Docker version: Docker version 25.0.13, build 0bab007'
+2025-11-22 14:19:11,186 p=17077 u=rowida n=ansible | TASK [docker : Test Docker] ****************************************************
+2025-11-22 14:19:13,928 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:19:13,942 p=17077 u=rowida n=ansible | TASK [docker : Display Docker test result] *************************************
+2025-11-22 14:19:13,968 p=17077 u=rowida n=ansible | ok: [13.219.152.247] => 
+  msg: ✅ Docker is working!
+2025-11-22 14:19:13,976 p=17077 u=rowida n=ansible | TASK [jenkins : Add Jenkins repository] ****************************************
+2025-11-22 14:19:15,716 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:19:15,732 p=17077 u=rowida n=ansible | TASK [jenkins : Import Jenkins GPG key] ****************************************
+2025-11-22 14:19:17,407 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:19:17,419 p=17077 u=rowida n=ansible | TASK [jenkins : Install Jenkins] ***********************************************
+2025-11-22 14:19:27,851 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:19:27,862 p=17077 u=rowida n=ansible | TASK [jenkins : Ensure Jenkins home directory exists] **************************
+2025-11-22 14:19:29,231 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:19:29,239 p=17077 u=rowida n=ansible | TASK [jenkins : Configure Jenkins Java options] ********************************
+2025-11-22 14:19:30,646 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:19:30,655 p=17077 u=rowida n=ansible | TASK [jenkins : Start and enable Jenkins service] ******************************
+2025-11-22 14:19:43,626 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:19:43,638 p=17077 u=rowida n=ansible | TASK [jenkins : Wait for Jenkins to start] *************************************
+2025-11-22 14:19:47,522 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:19:47,531 p=17077 u=rowida n=ansible | TASK [jenkins : Wait for Jenkins initial password file] ************************
+2025-11-22 14:19:48,952 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:19:48,967 p=17077 u=rowida n=ansible | TASK [jenkins : Get Jenkins initial admin password] ****************************
+2025-11-22 14:19:50,337 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:19:50,348 p=17077 u=rowida n=ansible | TASK [jenkins : Display Jenkins initial password] ******************************
+2025-11-22 14:19:50,375 p=17077 u=rowida n=ansible | ok: [13.219.152.247] => 
+  msg: |-
+    ==========================================
+    Jenkins Initial Admin Password:
+    0ed93ca4464b4eeaa335bc41a52137f0
+  
+    ==========================================
+  
+    Jenkins URL: http://13.219.152.247:8080
+  
+    Next steps:
+    1. Open Jenkins URL in browser
+    2. Use the password above
+    3. Install suggested plugins
+    4. Create admin user
+2025-11-22 14:19:50,424 p=17077 u=rowida n=ansible | TASK [jenkins : Save Jenkins password to file] *********************************
+2025-11-22 14:19:57,612 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:19:57,619 p=17077 u=rowida n=ansible | TASK [jenkins : Install kubectl (for Kubernetes deployment)] *******************
+2025-11-22 14:19:59,392 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:19:59,402 p=17077 u=rowida n=ansible | TASK [jenkins : Install Minikube] **********************************************
+2025-11-22 14:20:01,035 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:20:01,049 p=17077 u=rowida n=ansible | TASK [jenkins : Create swap file for Minikube (if not exists)] *****************
+2025-11-22 14:20:02,438 p=17077 u=rowida n=ansible | ok: [13.219.152.247]
+2025-11-22 14:20:02,446 p=17077 u=rowida n=ansible | RUNNING HANDLER [jenkins : restart jenkins] ************************************
+2025-11-22 14:20:12,877 p=17077 u=rowida n=ansible | changed: [13.219.152.247]
+2025-11-22 14:20:12,883 p=17077 u=rowida n=ansible | TASK [Display completion message] **********************************************
+2025-11-22 14:20:12,926 p=17077 u=rowida n=ansible | ok: [13.219.152.247] => 
+  msg: |-
+    ==========================================
+    Configuration Complete!
+    ==========================================
+  
+    Jenkins URL: http://13.219.152.247:8080
+    SSH Command: ssh -i ~/.ssh/clouddevops-key ec2-user@13.219.152.247
+  
+    Jenkins initial password saved to: /home/ec2-user/jenkins_initial_password.txt
+  
+    Services installed:
+    - Git
+    - Docker
+    - Java 11
+    - Jenkins
+    - kubectl
+    - Minikube
+  
+    Next steps:
+    1. Access Jenkins at the URL above
+    2. Use the initial password to login
+    3. Install suggested plugins
+    4. Configure Jenkins for your CI/CD pipeline
+2025-11-22 14:20:12,946 p=17077 u=rowida n=ansible | PLAY RECAP *********************************************************************
+2025-11-22 14:20:12,946 p=17077 u=rowida n=ansible | 13.219.152.247             : ok=39   changed=17   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
